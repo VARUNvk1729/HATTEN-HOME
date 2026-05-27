@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Hatten Homes</title>
+    <style>
+        body { font-family: Arial,sans-serif; background:#f7f7f7; }
+        .container { max-width: 1000px; margin: 36px auto; background: #fff; padding: 28px 34px; border-radius: 12px; box-shadow:0 0 7px rgba(0,0,0,.08);}
+        table { width: 100%; border-collapse: collapse;}
+        th, td { padding: 10px 8px; border: 1px solid #ccc; }
+        th { background: #eee; }
+        .actions a { margin: 0 8px; }
+        .logout { float:right; text-decoration:none; font-size:0.95em; color:#b43535;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>
+            Admin Dashboard
+            <a class="logout" href="{{ url_for('admin_logout') }}">Logout</a>
+        </h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for cat, msg in messages %}
+                <div style="color:red;">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Booked At</th>
+                    <th>Aadhaar File</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for b in bookings %}
+                <tr>
+                    <td>{{ b.id }}</td>
+                    <td>{{ b.full_name }}</td>
+                    <td>{{ b.email }}</td>
+                    <td>{{ b.mobile_number }}</td>
+                    <td>{{ b.checkin_date }}</td>
+                    <td>{{ b.checkout_date }}</td>
+                    <td>{{ b.created_at }}</td>
+                    <td class="actions">
+                    {% if b.aadhaar_file %}
+                        <a href="{{ url_for('admin_aadhaar_file', booking_id=b.id) }}" target="_blank">Download</a>
+                    {% else %}
+                        <em>Not uploaded</em>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

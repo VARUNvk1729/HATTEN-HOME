@@ -1,0 +1,25 @@
+# Secrets
+.env
+hatten_homes/.env
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# Uploads and generated files
+hatten_homes/uploads/
+hatten_homes/static/uploads/
+uploads/
+
+# IDE and OS files
+.vscode/
+.DS_Store
+Thumbs.db

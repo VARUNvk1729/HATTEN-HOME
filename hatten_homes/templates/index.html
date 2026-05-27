@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hatten Homes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-bar">
+            <div class="brand">HATTEN HOMES</div>
+            <nav class="navbar-actions">
+                <a href="{{ url_for('book') }}" class="nav-book-btn">Book Room</a>
+                <a href="https://maps.app.goo.gl/W6o4FvY8TCDSppYo7" class="nav-loc-title" id="nav-location-link" target="_blank" rel="noopener">Location</a>
+                <a href="https://wa.me/918096150904" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+                    <img src="{{ url_for('static', filename='img/app.png') }}" alt="WhatsApp">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+<section class="room-main-photo">
+    <img src="{{ url_for('static', filename='img/HomeImage.png') }}" alt="Main room at Hatten Homes">
+    <div class="room-intro">
+        <h1>HATTEN HOMES</h1>
+        <p>A cozy stay, just like home.<br>Comfortable | Private | Peaceful</p>
+    </div>
+</section>
+        <section class="room-features">
+            <h2>ABOUT THE ROOM</h2>
+            <div class="room-summary">
+                <div>2 Bedrooms</div>
+                <div>5 Guests</div>
+                <div>2 Bathrooms</div>
+            </div>
+            <p>Comfortable 2BHK retreat for up to 5 guests, designed for relaxing family and business stays.</p>
+        </section>
+<section class="amenities">
+    <h3>AMENITIES</h3>
+    <div class="amenities-list">
+        <div><img src="{{ url_for('static', filename='img/wifi.png') }}" alt="WiFi icon"> WiFi</div>
+        <div><img src="{{ url_for('static', filename='img/air-conditioner.png') }}" alt="Air Conditioner icon"> AC</div>
+        <div><img src="{{ url_for('static', filename='img/television.png') }}" alt="Television icon"> TV</div>
+        <div><img src="{{ url_for('static', filename='img/hot-water.png') }}" alt="Hot Water icon"> Hot Water</div>
+        <div><img src="{{ url_for('static', filename='img/parking.png') }}" alt="Parking icon"> Parking</div>
+        <div><img src="{{ url_for('static', filename='img/power.png') }}" alt="24/7 Power icon"> 24/7 Power</div>
+    </div>
+</section>
+<section class="room-gallery">
+    <h3>ROOM GALLERY</h3>
+    <div class="gallery-grid">
+        <img src="{{ url_for('static', filename='img/RoomImage1.png') }}" alt="Elegant bed view at Hatten Homes">
+        <img src="{{ url_for('static', filename='img/RoomImage2.png') }}" alt="Living area and workspace">
+        <img src="{{ url_for('static', filename='img/RoomImage3.png') }}" alt="Bathroom photo">
+        <img src="{{ url_for('static', filename='img/RoomImage4.jpg') }}" alt="Room & facilities overview">
+    </div>
+    <button class="view-photos-btn">View All Photos</button>
+</section>
+        <!-- Booking CTA and location moved to navbar -->
+    </main>
+    <footer>
+        <span>© 2026 Hatten Homes. All rights reserved.</span>
+    </footer>
+</body>
+</html>

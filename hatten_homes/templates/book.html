@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Your Stay | Hatten Homes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+.step::before, .circle::before {
+  display: none !important;
+}
+    .progress-steps { display: flex; justify-content: center; margin-bottom: 20px; }
+    .step { flex: 1; text-align: center; }
+    .circle {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 34px;
+        height: 34px;
+        margin: 0 auto 6px auto;
+        border-radius: 50%;
+        background: #fff !important;
+        color: #111;
+        border: 2.5px solid #111 !important;
+        font-weight: bold;
+        font-size: 1.15em;
+        box-sizing: border-box;
+        transition: background .2s, color .2s;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    .step.active .circle {
+        background: #111 !important;
+        color: #fff !important;
+        border: 2.5px solid #111 !important;
+    }
+    .steplabel {
+        display: block;
+        font-size: 0.98em;
+        color: #333;
+        font-weight: 600;
+        margin-top: 1px;
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-bar">
+            <a href="{{ url_for('index') }}" class="back-btn">&#8592;</a>
+            <div class="brand">HATTEN HOMES</div>
+<a href="https://wa.me/" class="whatsapp-btn" target="_blank">
+                <img src="{{ url_for('static', filename='img/app.png') }}" alt="WhatsApp">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="progress-steps">
+            <div class="step active"><div class="circle">1</div><div class="steplabel">Booking Details</div></div>
+            <div class="step"><div class="circle">2</div><div class="steplabel">Review</div></div>
+            <div class="step"><div class="circle">3</div><div class="steplabel">Confirmation</div></div>
+        </div>
+        <section class="booking-form-section">
+            <h1>BOOK YOUR STAY</h1>
+            <p>Please fill in the details below to book your room.</p>
+            <form class="booking-form" method="POST" enctype="multipart/form-data">
+                <label>Full Name <span class="required">*</span>
+<input type="text" name="full_name" placeholder="Enter your full name" required value="{{ booking.full_name if booking else '' }}">
+                </label>
+                <label>Mobile Number <span class="required">*</span>
+<input type="tel" name="mobile_number" pattern="[0-9]{10}" maxlength="10" placeholder="Enter mobile number" required value="{{ booking.mobile_number if booking else '' }}">
+                </label>
+                <label>Email ID <span class="required">*</span>
+<input type="email" name="email" placeholder="Enter email address" required value="{{ booking.email if booking else '' }}">
+                </label>
+                <label>Aadhaar Number <span class="required">*</span>
+<input type="text" name="aadhaar_number" pattern="[0-9]{12}" maxlength="12" placeholder="Enter 12 digit Aadhaar number" required value="{{ booking.aadhaar_number if booking else '' }}">
+                </label>
+                <label>Upload Aadhaar Photo <span class="required">*</span>
+                    <input type="file" name="aadhaar_photo" accept=".jpg,.jpeg,.png,.pdf" required>
+                    <small>JPG, PNG or PDF (Max. 5MB)</small>
+                </label>
+                <label>Check-in Date <span class="required">*</span>
+    <input type="date" name="checkin_date" required value="{{ booking.checkin_date if booking else '' }}">
+</label>
+<label>Check-out Date <span class="required">*</span>
+    <input type="date" name="checkout_date" required value="{{ booking.checkout_date if booking else '' }}">
+</label>
+<label>Number of Adults <span class="required">*</span>
+    <input type="number" name="adults" min="1" max="10" required value="{{ booking.adults if booking else '1' }}"
+        style="width: 72px; display: inline-block; padding: 8px 10px; font-size: 1.11em; text-align: center; border: 2px solid #888; border-radius: 8px; margin-left: 9px; margin-top: 5px; box-shadow: none; outline: none;"
+        onwheel="return false"
+        title="Number of adults">
+</label>
+<label>Number of Children 
+    <span style="display:inline-block;vertical-align:middle;">
+      <span tabindex="0" style="cursor: pointer; color: var(--main-brown); font-family:inherit;font-weight:bold; font-size:1.09em; margin-left:2px; outline:none; display:inline-block; border-radius:50%; border:1.3px solid var(--main-brown); width:1.18em; height:1.18em; text-align:center; line-height:1.05em;vertical-align:middle;"
+        title="Children under 10 are not counted in charges"
+        aria-label="Info: Children under 10 are not counted in charges">i</span>
+    </span>
+    <input type="number" name="children_count" min="0" max="10" value="{{ booking.children_count if booking else '0' }}"
+        style="width: 72px; display: inline-block; padding: 8px 10px; font-size: 1.11em; text-align: center; border: 2px solid #888; border-radius: 8px; margin-left: 9px; margin-top: 5px; box-shadow: none; outline: none;"
+        onwheel="return false"
+        id="children_count_input"
+        title="Number of children">
+</label>
+<div id="child-ages-panel" style="display:none; margin:10px 0 10px 0;">
+    <div style="margin-bottom:7px; font-size:0.97em; color:#222; font-weight: 500;">
+        Ages of Children:
+        <span style="font-size:0.93em; color:#666; font-weight:400;">(Enter age for each child)</span>
+    </div>
+    <div id="child-ages-container" style="display:flex; gap:14px; flex-wrap:wrap; margin-top:7px;"></div>
+</div>
+<style>
+.child-age-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #feeed2;
+    box-shadow: 0 1.5px 8px #f1dab3a5;
+    border-radius: 13px;
+    min-width: 84px;
+    margin: 3px 7px 8px 0;
+    border: 1.7px solid #d7aa60;
+    padding: 13px 12px 9px 12px;
+    position: relative;
+    transition: box-shadow .19s;
+}
+.child-age-card:focus-within, .child-age-card.active {
+    box-shadow: 0 2.5px 14px #e5cd94e8;
+    border-color: #b48506;
+}
+.child-number-badge {
+    background: #dfbb80;
+    color: #744f1d;
+    font-size: .95em;
+    font-weight: 700;
+    border-radius: 50px;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+    box-shadow: 0 1px 7px #f4d7a4ad;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.child-age-label {
+    font-size: 1em;
+    color: #a77b34;
+    font-weight:500;
+    margin-top: 3px;
+}
+.child-age-input {
+    width:56px;
+    margin-top:4px;
+    border-radius:8px;
+    border:1.8px solid #cca84a;
+    text-align:center;
+    padding:5px 0;
+    font-size:1em;
+    box-shadow: 0 1px 3px #eedeb698;
+    outline:none;
+    transition: border-color .14s;
+}
+.child-age-input:focus {
+    border-color: #a17c27;
+    background: #fdf7e5;
+}
+.charge-status {
+    margin-top:6px;
+    font-size:0.98em;
+    font-weight:570;
+    border-radius: 7px;
+    padding: 2.5px 11px;
+    background: #e1eee4;
+    color: #139950;
+    display: inline-block;
+    min-width:75px;
+}
+.charge-status.charged {
+    background: #f9e5e1;
+    color: #a23524;
+}
+.child-icon {
+    font-size:1.43em;
+    margin-bottom: 1px;
+    color:#f7c450;
+    text-shadow: 0 0.5px 1.5px #daaa2c;
+}
+</style>
+<script>
+    function createChildAgeInputs(count) {
+        const container = document.getElementById('child-ages-container');
+        if (!container) return;
+        container.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+            // Card
+            const card = document.createElement('div');
+            card.className = 'child-age-card';
+
+            // Icon and badge
+            const iconSpan = document.createElement('span');
+            iconSpan.className = "child-icon";
+            iconSpan.innerText = i % 2 === 0 ? "👦" : "👧"; // alternate icons
+            card.appendChild(iconSpan);
+
+            const badge = document.createElement('div');
+            badge.className = 'child-number-badge';
+            badge.innerText = (i + 1);
+            card.appendChild(badge);
+
+            // Label
+            const label = document.createElement('div');
+            label.className = 'child-age-label';
+            label.innerText = "Age";
+            card.appendChild(label);
+
+            // Input
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.name = 'children_ages[]';
+            input.className = 'child-age-input';
+            input.min = 0;
+            input.max = 17;
+            input.required = false;
+            input.value = '';
+            card.appendChild(input);
+
+            // Charge/Not charged status
+            const status = document.createElement('span');
+            status.className = 'charge-status';
+            status.textContent = '';
+            card.appendChild(status);
+
+            function updateStatus() {
+                const val = parseInt(input.value, 10);
+                if (!isNaN(val)) {
+                    if (val < 10) {
+                        status.textContent = "Not Charged";
+                        status.classList.remove("charged");
+                    } else {
+                        status.textContent = "Charged";
+                        status.classList.add("charged");
+                    }
+                } else {
+                    status.textContent = '';
+                    status.classList.remove("charged");
+                }
+            }
+            input.addEventListener('input', updateStatus);
+
+            container.appendChild(card);
+        }
+    }
+    const childrenCountInput = document.getElementById('children_count_input');
+    const childAgesPanel = document.getElementById('child-ages-panel');
+    function updateChildAgesPanel(count) {
+        if (count > 0) {
+            childAgesPanel.style.display = '';
+            createChildAgeInputs(count);
+        } else {
+            childAgesPanel.style.display = 'none';
+            document.getElementById('child-ages-container').innerHTML = '';
+        }
+    }
+    if (childrenCountInput && childAgesPanel) {
+        childrenCountInput.addEventListener('input', function() {
+            const count = Math.max(0, Math.min(10, Number(this.value) || 0));
+            updateChildAgesPanel(count);
+        });
+        // initialize if value > 0 (e.g. review step or reload)
+        if (Number(childrenCountInput.value) > 0) {
+            updateChildAgesPanel(Number(childrenCountInput.value));
+        }
+    }
+</script>
+<input type="hidden" name="amount" value="{{ booking.amount if booking else 2000 }}">
+                <button type="submit" class="next-step-btn">NEXT &rarr;</button>
+                <div class="secure-info">Your information is safe and secure.</div>
+            </form>
+            <script>
+                // Disable all past dates in the check-in and check-out pickers
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const dd = String(today.getDate()).padStart(2, '0');
+                const minDateStr = yyyy + '-' + mm + '-' + dd;
+                const checkinInput = document.querySelector('input[name="checkin_date"]');
+                const checkoutInput = document.querySelector('input[name="checkout_date"]');
+                checkinInput.setAttribute('min', minDateStr);
+                checkoutInput.setAttribute('min', minDateStr);
+
+                // When check-in changes, update check-out's min attribute to match selected check-in (cannot choose earlier)
+                checkinInput.addEventListener('change', function() {
+                    checkoutInput.setAttribute('min', this.value);
+                    if (checkoutInput.value < this.value) {
+                        checkoutInput.value = this.value;
+                    }
+                });
+
+                document.querySelector('.booking-form').addEventListener('submit', function(e) {
+                    var aadhaar = document.querySelector('input[name="aadhaar_number"]').value.trim();
+                    if (!/^\d{12}$/.test(aadhaar)) {
+                        alert("Aadhaar number must be exactly 12 digits.");
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+            </script>
+        </section>
+    </main>
+    <footer>
+        <span>© 2026 Hatten Homes. All rights reserved.</span>
+    </footer>
+</body>
+</html>
