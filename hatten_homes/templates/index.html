@@ -8,58 +8,142 @@
     <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 </head>
 <body>
+    <!-- NAVBAR -->
     <header class="header">
         <div class="header-bar">
             <div class="brand">HATTEN HOMES</div>
             <nav class="navbar-actions">
                 <a href="{{ url_for('book') }}" class="nav-book-btn">Book Room</a>
-                <a href="https://maps.app.goo.gl/W6o4FvY8TCDSppYo7" class="nav-loc-title" id="nav-location-link" target="_blank" rel="noopener">Location</a>
+                <a href="https://maps.app.goo.gl/W6o4FvY8TCDSppYo7" class="nav-loc-title" target="_blank" rel="noopener">Location</a>
+                <a href="#amenities" class="nav-loc-title">Amenities</a>
+                <a href="#gallery" class="nav-loc-title">Gallery</a>
+                <!-- <a href="#contact" class="nav-loc-title">Contact</a> -->
                 <a href="https://wa.me/918096150904" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
                     <img src="{{ url_for('static', filename='img/app.png') }}" alt="WhatsApp">
                 </a>
             </nav>
         </div>
     </header>
-
     <main>
-<section class="room-main-photo">
-    <img src="{{ url_for('static', filename='img/HomeImage.png') }}" alt="Main room at Hatten Homes">
-    <div class="room-intro">
-        <h1>HATTEN HOMES</h1>
-        <p>A cozy stay, just like home.<br>Comfortable | Private | Peaceful</p>
-    </div>
-</section>
-        <section class="room-features">
-            <h2>ABOUT THE ROOM</h2>
-            <div class="room-summary">
-                <div>2 Bedrooms</div>
-                <div>5 Guests</div>
-                <div>2 Bathrooms</div>
+        <!-- HERO SECTION -->
+        <section class="room-main-photo">
+            <img src="{{ url_for('static', filename='img/HomeImage.png') }}" alt="Main room at Hatten Homes" />
+            <div class="room-intro">
+                <h1>HATTEN HOMES</h1>
+                <p>A cozy stay,<br>just like home.</p>
             </div>
-            <p>Comfortable 2BHK retreat for up to 5 guests, designed for relaxing family and business stays.</p>
         </section>
-<section class="amenities">
-    <h3>AMENITIES</h3>
-    <div class="amenities-list">
-        <div><img src="{{ url_for('static', filename='img/wifi.png') }}" alt="WiFi icon"> WiFi</div>
-        <div><img src="{{ url_for('static', filename='img/air-conditioner.png') }}" alt="Air Conditioner icon"> AC</div>
-        <div><img src="{{ url_for('static', filename='img/television.png') }}" alt="Television icon"> TV</div>
-        <div><img src="{{ url_for('static', filename='img/hot-water.png') }}" alt="Hot Water icon"> Hot Water</div>
-        <div><img src="{{ url_for('static', filename='img/parking.png') }}" alt="Parking icon"> Parking</div>
-        <div><img src="{{ url_for('static', filename='img/power.png') }}" alt="24/7 Power icon"> 24/7 Power</div>
+
+        <!-- ABOUT THE ROOM -->
+<section class="room-features card-section">
+    <h2>ABOUT THE ROOM</h2>
+    <div class="about-room-row">
+        <div class="about-room-left about-room-right">
+            <img src="{{ url_for('static', filename='img/About.png') }}" class="about-image" alt="About the Room image" />
+        </div>
+        <div class="about-room-features">
+            <div class="room-summary icons-row">
+                <div>
+                    <img src="{{ url_for('static', filename='img/bedroom.png') }}" class="room-icon" alt="Bedroom icon"/>
+                    <div>2 Bedrooms</div>
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='img/cake.png') }}" class="room-icon" alt="Guests icon"/>
+                    <div>5 Guests</div>
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='img/bathroom.png') }}" class="room-icon" alt="Bathroom icon"/>
+                    <div>2 Bathrooms</div>
+                </div>
+            </div>
+            <div class="about-room-desc">
+                <p>Comfortable 2BHK retreat for up to 5 guests, designed for relaxing family and business stays.</p>
+            </div>
+        </div>
     </div>
 </section>
-<section class="room-gallery">
-    <h3>ROOM GALLERY</h3>
-    <div class="gallery-grid">
-        <img src="{{ url_for('static', filename='img/RoomImage1.png') }}" alt="Elegant bed view at Hatten Homes">
-        <img src="{{ url_for('static', filename='img/RoomImage2.png') }}" alt="Living area and workspace">
-        <img src="{{ url_for('static', filename='img/RoomImage3.png') }}" alt="Bathroom photo">
-        <img src="{{ url_for('static', filename='img/RoomImage4.jpg') }}" alt="Room & facilities overview">
+
+        <!-- KITCHEN AMENITIES -->
+        <section class="kitchen-amenities card-section">
+            <h3>KITCHEN AMENITIES</h3>
+            <div class="amenities-list icons-row">
+<div><img src="{{ url_for('static', filename='img/kitchen-set.png') }}" class="amenity-icon" alt="Kitchen icon"/> Fully Equipped Kitchen</div>
+                <div><img src="{{ url_for('static', filename='img/fridge.png') }}" class="amenity-icon" alt="Refrigerator icon"/> Refrigerator</div>
+                <div><img src="{{ url_for('static', filename='img/appliance.png') }}" class="amenity-icon" alt="Water Purifier icon"/> Water Purifier</div>
+                <div><img src="{{ url_for('static', filename='img/stove.png') }}" class="amenity-icon" alt="Stove or Induction icon"/> Stove or Induction</div>
+                <div><img src="{{ url_for('static', filename='img/kitchenware.png') }}" class="amenity-icon" alt="Cookware Utensils icon"/> Cookware & Utensils</div>
+            </div>
+        </section>
+
+        <!-- PROPERTY AMENITIES -->
+        <section class="property-amenities card-section" id="amenities">
+            <h3>PROPERTY AMENITIES</h3>
+            <div class="amenities-list icons-row">
+                <div>
+                    <img src="{{ url_for('static', filename='img/wifi.png') }}" alt="WiFi icon" /> WiFi
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='img/air-conditioner.png') }}" alt="AC icon" /> AC
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='img/television.png') }}" alt="Television icon" /> TV
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='img/hot-water.png') }}" alt="Hot Water icon" /> Hot Water
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='img/parking.png') }}" alt="Parking icon" /> Parking
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='img/power.png') }}" alt="24/7 Power icon" /> 24/7 Power
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES & ADD-ONS -->
+        <section class="services-addons card-section">
+            <h3>SERVICES & ADD-ONS</h3>
+            <div class="amenities-list icons-row">
+<div><img src="{{ url_for('static', filename='img/cleaner.png') }}" class="amenity-icon" alt="Housekeeping icon"/> Housekeeping</div>
+                <div><img src="{{ url_for('static', filename='img/mattress.png') }}" class="amenity-icon" alt="Extra Bedding icon"/> Extra Bedding</div>
+                <div><img src="{{ url_for('static', filename='img/airport.png') }}" class="amenity-icon" alt="Airport Pickup icon"/> Airport Pickup</div>
+                <div><img src="{{ url_for('static', filename='img/laundry-machine.png') }}" class="amenity-icon" alt="Laundry icon"/> Laundry</div>
+            </div>
+        </section>
+
+        <!-- LOCATION -->
+<section class="location-footer card-section" id="location">
+    <div class="location-card">
+        <div class="location-desc">
+            <span class="location-pin">
+                <img src="{{ url_for('static', filename='img/location.png') }}" alt="Location Pin" />
+            </span>
+            <span>
+                Located in Nanakramguda, Hyderabad — close to major IT hubs, restaurants, malls, and hospitals.
+            </span>
+        </div>
+        <div class="location-action">
+            <a href="https://maps.app.goo.gl/W6o4FvY8TCDSppYo7" class="main-btn" target="_blank" rel="noopener">
+                View on Google Maps
+            </a>
+        </div>
     </div>
-    <button class="view-photos-btn">View All Photos</button>
 </section>
-        <!-- Booking CTA and location moved to navbar -->
+        
+        <!-- ROOM GALLERY (optional, not in provided ref) -->
+        <section class="room-gallery card-section" id="gallery">
+            <h3>ROOM GALLERY</h3>
+            <div class="gallery-grid">
+                <img src="{{ url_for('static', filename='img/RoomImage1.png') }}" alt="Elegant bed view at Hatten Homes" />
+                <img src="{{ url_for('static', filename='img/RoomImage2.png') }}" alt="Living area and workspace" />
+                <img src="{{ url_for('static', filename='img/RoomImage3.png') }}" alt="Bathroom photo" />
+                <img src="{{ url_for('static', filename='img/RoomImage4.jpg') }}" alt="Room & facilities overview" />
+            </div>
+            <button class="view-photos-btn">View All Photos</button>
+        </section>
+        
+        <!-- CONTACT (anchor for nav) -->
+        <section id="contact"></section>
     </main>
     <footer>
         <span>© 2026 Hatten Homes. All rights reserved.</span>
