@@ -307,43 +307,58 @@ header, .header-bar {
     .header-bar {
         flex-direction: column;
         align-items: center;
-        gap: 0.36em;
+        gap: 0.12em;
         padding: 0.7em 0.07em !important;
         min-height: unset;
+        width: 100vw;
     }
     .brand {
         width: 100%;
-        font-size: 1.09em;
+        font-size: 1.14em;
+        font-weight: 800;
         text-align: center !important;
         padding-left: 0;
-        margin-bottom: 0.23em;
-        padding-bottom: 0.14em;
-        line-height: 1.18;
+        margin-bottom: 0.12em;
+        padding-bottom: 0.08em;
+        line-height: 1.23;
     }
     .navbar-actions {
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        width: 100%;
-        gap: 0.16em;
+        width: 100vw;
+        gap: 0.30em;
         margin: 0;
-        padding: 0;
+        padding: 0 0 0.7em 0;
+        background: #fff;
+        box-shadow: 0 4px 20px 0 #c7b39d21;
+        border-radius: 18px;
+        max-width: 97vw;
     }
     .navbar-actions a {
-        width: 94vw;
+        width: 95vw;
+        margin: 0.06em 0;
         display: block;
-        border-radius: 12px;
-        padding: 1.05em 0;
-        font-size: 1.16em;
-        margin: 0.07em 0;
-        background: #f9f6f2;
-        text-align: center;
+        border-radius: 17px;
+        padding: 1.11em 0;
+        font-size: 1.12em;
+        letter-spacing: 1px;
+        font-family: var(--font-heading);
         font-weight: 700;
-        border-bottom: 1.5px solid #efe5d8;
+        background: #f8f3e7fc;
+        color: #5a3823;
+        box-shadow: 0 1px 8px 0 #d2bfa72b;
+        text-align: center;
+        border: none;
+        transition: background .13s, color .13s, box-shadow .14s;
     }
-    .navbar-actions a:last-child { border-bottom: none; }
-    .nav-book-btn { border-radius: 20px; padding: 1.07em 0; }
-    .header, .header-bar { padding: 0.7em 0.07em !important;}
+    .navbar-actions a:hover, .navbar-actions a:focus {
+        background: #f4e7c6;
+        color: #ac8320;
+        box-shadow: 0 2px 13px 0 #dbe1a515;
+    }
+    .whatsapp-btn { display: none !important; }
+    .nav-book-btn { border-radius: 17px; background: linear-gradient(87deg,#c39a5b 72%,#5a3823 100%); color: #fff;}
+    .header, .header-bar { padding: 0.2em 0.03em !important; background: #fff;}
     .room-main-photo { height: 142px; margin-top: 12px; border-radius: 7px;}
     .room-main-photo img { border-radius: 7px;}
     .room-main-photo::after { border-radius: 7px;}
