@@ -253,6 +253,49 @@ header, .header-bar {
 }
 
 @media (max-width: 900px) {
+    .header {
+        position: static !important;
+        top: unset !important;
+        backdrop-filter: none !important;
+        box-shadow: var(--shadow);
+    }
+    .header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.1em;
+        position: static !important;
+        top: unset !important;
+        backdrop-filter: none !important;
+        box-shadow: none;
+        min-height: unset;
+        width: 100%;
+    }
+    .brand {
+        font-size: 1.07em;
+        padding-left: 4vw;
+        padding-bottom: 0.4em;
+        margin-bottom: 0.25em;
+        text-align: left;
+        width: 100%;
+    }
+    .navbar-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0.6em;
+    }
+    .navbar-actions a {
+        width: 100%;
+        padding: 0.7em 0.9em;
+        font-size: 1em;
+        text-align: left;
+        border-radius: 9px;
+        margin: 0;
+    }
+    .nav-book-btn { width: 100%; border-radius: 13px; font-size: 1.06em; }
+    .nav-loc-title { width: 100%; min-width: 0; }
+    .whatsapp-btn img { margin: 0 auto;}
+    .header, .header-bar { padding: 1em 0.7em;}
     .room-main-photo { height: 260px; border-radius: 19px;}
     .room-main-photo img { border-radius: 19px;}
     .room-main-photo::after { border-radius: 19px;}
@@ -261,6 +304,46 @@ header, .header-bar {
     .room-intro p  { font-size: 0.94em; }
 }
 @media (max-width: 600px) {
+    .header-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.36em;
+        padding: 0.7em 0.07em !important;
+        min-height: unset;
+    }
+    .brand {
+        width: 100%;
+        font-size: 1.09em;
+        text-align: center !important;
+        padding-left: 0;
+        margin-bottom: 0.23em;
+        padding-bottom: 0.14em;
+        line-height: 1.18;
+    }
+    .navbar-actions {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 0.16em;
+        margin: 0;
+        padding: 0;
+    }
+    .navbar-actions a {
+        width: 94vw;
+        display: block;
+        border-radius: 12px;
+        padding: 1.05em 0;
+        font-size: 1.16em;
+        margin: 0.07em 0;
+        background: #f9f6f2;
+        text-align: center;
+        font-weight: 700;
+        border-bottom: 1.5px solid #efe5d8;
+    }
+    .navbar-actions a:last-child { border-bottom: none; }
+    .nav-book-btn { border-radius: 20px; padding: 1.07em 0; }
+    .header, .header-bar { padding: 0.7em 0.07em !important;}
     .room-main-photo { height: 142px; margin-top: 12px; border-radius: 7px;}
     .room-main-photo img { border-radius: 7px;}
     .room-main-photo::after { border-radius: 7px;}
@@ -334,12 +417,24 @@ header, .header-bar {
     padding: 0;
 }
 .about-room-features .room-summary > div {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    min-width: 110px;
+    min-width: 120px;
+    margin: 0 1em;
 }
 .about-room-features .room-summary img {
-    margin-right: 0.58em;
-    margin-bottom: 0;
+    margin: 0 auto 0.17em auto;
+    display: block;
+}
+.about-room-features .room-summary > div > div {
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+    color: #564633;
+    margin: 0 auto;
+    margin-top: 0.18em;
+    letter-spacing: 0.2px;
 }
 .about-room-features .about-room-desc {
     margin: 0;
@@ -421,24 +516,73 @@ header, .header-bar {
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    gap: 2.2em;
-    font-size: 1.1em;
+    gap: 1.2em;
+    font-size: 1.12em;
     margin: 1em 0 0 0;
     overflow-x: auto;
     scrollbar-width: thin;
+    padding-bottom: 0.1em;
 }
+
 .amenities-list > div {
-    display: flex; align-items: center; font-weight: 500;
-    background: rgba(228,222,213,0.36);
-    border-radius: 50px; padding: .47em 1.3em .47em .5em;
-    box-shadow: var(--shadow-am); margin-bottom: 0.25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    background: #ffffffbd;
+    border-radius: 18px;
+    padding: 1.3em 1.15em 0.9em 1.15em;
+    margin-bottom: 0.3em;
+    min-width: 120px;
+    box-shadow: 0 3px 18px 0 rgba(172, 141, 89, 0.09), 0 1px 3px 0 #beae9b14;
+    position: relative;
+    transition: box-shadow 0.18s, background 0.12s, transform 0.13s;
+    cursor: pointer;
 }
+.amenities-list > div:hover, .amenities-list > div:focus {
+    background: #f8f3e3;
+    box-shadow: 0 5px 21px 0 #d1ba8748, 0 4px 10px 0 #bda26925;
+    transform: translateY(-2px) scale(1.04);
+}
+
 .amenities-list img {
-    height: 29px; width: 29px; border-radius: 100%;
-    background: #fff;
-    box-shadow: 0 1px 2px #bebec49a;
-    margin-right: 0.77em;
-    padding: 0.1em 0.23em;
+    height: 38px;
+    width: 38px;
+    max-width: 38px;
+    max-height: 38px;
+    border-radius: 100%;
+    background: #fcfaf7;
+    box-shadow: 0 2px 8px 0 #dcc18f24;
+    margin: 0 auto 0.46em auto;
+    padding: 0.13em 0.19em;
+    display: block;
+}
+
+.amenities-list > div span,
+.amenities-list > div label,
+.amenities-list > div div:not(:has(img)) {
+    display: block;
+    margin: 0;
+    margin-top: 0.1em;
+    font-size: 0.98em;
+    color: #633e15;
+    font-family: var(--font-main);
+    text-align: center;
+    line-height: 1.23;
+    letter-spacing: 0.14px;
+    font-weight: 600;
+    padding-top: 0.14em;
+    word-break: keep-all;
+}
+
+@media (max-width: 900px) {
+    .amenities-list > div {
+        min-width: 108px;
+        padding: 1.1em 0.8em 0.8em 0.8em;
+    }
+    .amenities-list img {
+        height: 29px; width: 29px; max-width: 29px; max-height: 29px;
+    }
 }
 
 .gallery-grid {
