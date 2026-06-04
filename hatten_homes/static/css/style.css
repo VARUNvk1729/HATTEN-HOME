@@ -252,137 +252,15 @@ header, .header-bar {
     vertical-align: middle;
 }
 
-@media (max-width: 900px) {
-    .header {
-        position: static !important;
-        top: unset !important;
-        backdrop-filter: none !important;
-        box-shadow: var(--shadow);
-    }
-    .header-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.1em;
-        position: static !important;
-        top: unset !important;
-        backdrop-filter: none !important;
-        box-shadow: none;
-        min-height: unset;
-        width: 100%;
-    }
-    .brand {
-        font-size: 1.07em;
-        padding-left: 4vw;
-        padding-bottom: 0.4em;
-        margin-bottom: 0.25em;
-        text-align: left;
-        width: 100%;
-    }
-    .navbar-actions {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        gap: 0.6em;
-    }
-    .navbar-actions a {
-        width: 100%;
-        padding: 0.7em 0.9em;
-        font-size: 1em;
-        text-align: left;
-        border-radius: 9px;
-        margin: 0;
-    }
-    .nav-book-btn { width: 100%; border-radius: 13px; font-size: 1.06em; }
-    .nav-loc-title { width: 100%; min-width: 0; }
-    .whatsapp-btn img { margin: 0 auto;}
-    .header, .header-bar { padding: 1em 0.7em;}
-    .room-main-photo { height: 260px; border-radius: 19px;}
-    .room-main-photo img { border-radius: 19px;}
-    .room-main-photo::after { border-radius: 19px;}
-    .room-intro { padding: 1.05em 0.9em 0.8em 1em; border-radius: 13px; max-width: 87vw; }
-    .room-intro h1 { font-size: 1.02em; }
-    .room-intro p  { font-size: 0.94em; }
-}
-@media (max-width: 600px) {
-    .header-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.12em;
-        padding: 0.7em 0.07em !important;
-        min-height: unset;
-        width: 100vw;
-    }
-    .brand {
-        width: 100%;
-        font-size: 1.14em;
-        font-weight: 800;
-        text-align: center !important;
-        padding-left: 0;
-        margin-bottom: 0.12em;
-        padding-bottom: 0.08em;
-        line-height: 1.23;
-    }
-    .navbar-actions {
-        flex-direction: column;
-        align-items: center;
-        width: 100vw;
-        gap: 0.30em;
-        margin: 0;
-        padding: 0 0 0.7em 0;
-        background: #fff;
-        box-shadow: 0 4px 20px 0 #c7b39d21;
-        border-radius: 18px;
-        max-width: 97vw;
-    }
-    .navbar-actions a {
-        width: 95vw;
-        margin: 0.06em 0;
-        display: block;
-        border-radius: 17px;
-        padding: 1.11em 0;
-        font-size: 1.12em;
-        letter-spacing: 1px;
-        font-family: var(--font-heading);
-        font-weight: 700;
-        background: #f8f3e7fc;
-        color: #5a3823;
-        box-shadow: 0 1px 8px 0 #d2bfa72b;
-        text-align: center;
-        border: none;
-        transition: background .13s, color .13s, box-shadow .14s;
-    }
-    .navbar-actions a:hover, .navbar-actions a:focus {
-        background: #f4e7c6;
-        color: #ac8320;
-        box-shadow: 0 2px 13px 0 #dbe1a515;
-    }
-    .whatsapp-btn { display: none !important; }
-    .nav-book-btn { border-radius: 17px; background: linear-gradient(87deg,#c39a5b 72%,#5a3823 100%); color: #fff;}
-    .header, .header-bar { padding: 0.2em 0.03em !important; background: #fff;}
-    .room-main-photo { height: 142px; margin-top: 12px; border-radius: 7px;}
-    .room-main-photo img { border-radius: 7px;}
-    .room-main-photo::after { border-radius: 7px;}
-    .room-intro { padding: 0.7em 0.44em 0.6em 0.49em; border-radius: 6px; max-width: 97vw;}
-    .room-intro h1 { font-size: 1em; }
-    .room-intro p { font-size: 0.88em; }
-}
+/* Removed @media (max-width: 900px) block for mobile responsiveness */
+/* Removed @media (max-width: 600px) block for mobile responsiveness */
 @keyframes fadeup {
     0%{opacity: 0;transform: translateY(34px);}
     95%{opacity: 1;}
     100%{opacity: 1;transform: translateY(0);}
 }
-@media (max-width: 900px) {
-    .room-main-photo { height: 260px; border-radius: 19px;}
-    .room-main-photo img { border-radius: 19px;}
-    .room-main-photo::after { border-radius: 19px;}
-    .room-intro { padding: 2.1em 1.3em; border-radius: 14px;}
-}
-@media (max-width: 600px) {
-    .room-main-photo { height: 172px; margin-top: 17px; border-radius: 11px;}
-    .room-main-photo img { border-radius: 11px;}
-    .room-main-photo::after { border-radius: 11px;}
-    .room-intro { padding: 1.1em 0.7em; border-radius: 8px; }
-}
+/* Removed @media (max-width: 900px) block for mobile responsiveness */
+/* Removed @media (max-width: 600px) block for mobile responsiveness */
 
 .room-features, .amenities, .room-gallery, .booking-cta-card, .location-footer, .booking-form-section, .confirmation-container {
     background: var(--glass-bg);
@@ -484,40 +362,9 @@ header, .header-bar {
     box-shadow: 0 6px 24px 0 #6d4c2b29, 0 1px 8px 0 #89592913;
     object-fit: cover;
 }
-@media (max-width: 900px) {
-    .about-room-row {
-        flex-direction: column;
-        gap: 1.2em;
-        align-items: stretch;
-    }
-    .about-image,
-    .about-room-right {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 96vw !important;
-        margin: 1em auto 0 auto;
-    }
-    .about-room-desc {
-        justify-content: center;
-        text-align: center;
-        margin-left: 0;
-    }
-}
+/* Removed @media (max-width: 900px) block for mobile responsiveness */
 
-/* Responsive "About the Room": Stack vertically on mobile */
-@media (max-width: 900px) {
-    .about-room-row {
-        flex-direction: column;
-        gap: 1.4em;
-        align-items: flex-start;
-    }
-    .about-room-right, .about-image {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 98vw !important;
-        margin: 1em auto 0 auto;
-    }
-}
+/* Removed Responsive "About the Room" mobile block and @media (max-width: 900px) */
 .room-summary {
     display: flex;
     gap: 3.5em;
@@ -590,15 +437,7 @@ header, .header-bar {
     word-break: keep-all;
 }
 
-@media (max-width: 900px) {
-    .amenities-list > div {
-        min-width: 108px;
-        padding: 1.1em 0.8em 0.8em 0.8em;
-    }
-    .amenities-list img {
-        height: 29px; width: 29px; max-width: 29px; max-height: 29px;
-    }
-}
+/* Removed @media (max-width: 900px) block for mobile responsiveness */
 
 .gallery-grid {
     display: grid;
@@ -781,21 +620,8 @@ input[type="date"]::-webkit-input-placeholder { color: #aaa; }
 
 .confirmation-info { margin: 1.39em 0 0 0; color: var(--main-brown); font-size: 1.06em; }
 
-@media (max-width: 900px) {
-    .main, footer, .room-main-photo, .room-features, .amenities, .room-gallery, .booking-cta-card, .location-footer, .booking-form-section, .confirmation-container {
-        max-width: 98vw; padding: 1.13em 0.8em;
-    }
-    .gallery-grid { grid-template-columns: 1fr 1fr;}
-    .room-main-photo img { min-height: 160px;}
-    header, .header-bar { padding: 1em 1em;}
-}
-@media (max-width: 600px) {
-    .main, footer, .room-main-photo, .room-features, .amenities, .room-gallery, .booking-cta-card, .location-footer, .booking-form-section, .confirmation-container {
-        padding: 1em 0.19em;
-    }
-    .gallery-grid { grid-template-columns: 1fr; }
-    .room-main-photo img { min-height: 110px; }
-}
+/* Removed @media (max-width: 900px) block for mobile responsiveness */
+/* Removed @media (max-width: 600px) block for mobile responsiveness */
 
 .back-btn {
     font-size: 1.5em; color: var(--main-brown); margin-right: 1.3em; text-decoration: none; background: none; border: none;
@@ -857,30 +683,4 @@ input[type="file"]::file-selector-button { background: var(--main-brown); color:
     border-radius: 18px;
 }
 
-/* Responsive: vertical stack for mobile */
-@media (max-width: 700px) {
-    .location-footer .location-card {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1.45em 1.05em;
-        gap: 1.1em;
-        min-height: unset;
-        margin: 0.4em auto 0 auto;
-    }
-    .location-desc {
-        font-size: 1.12em;
-        gap: 0.72em;
-        margin-bottom: 0.28em;
-    }
-    .location-action {
-        width: 100%;
-        justify-content: flex-start;
-    }
-    .location-action .main-btn {
-        width: 100%;
-        min-width: unset;
-        text-align: center;
-        padding: 1em 0;
-        font-size: 1.13em;
-    }
-}
+/* Removed Responsive: vertical stack for mobile - @media (max-width: 700px) block */
