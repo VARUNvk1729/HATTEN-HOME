@@ -139,8 +139,51 @@
                 <img src="{{ url_for('static', filename='img/RoomImage3.png') }}" alt="Bathroom photo" />
                 <img src="{{ url_for('static', filename='img/RoomImage4.jpg') }}" alt="Room & facilities overview" />
             </div>
-            <button class="view-photos-btn">View All Photos</button>
+            <button class="view-photos-btn" onclick="showGalleryModal()">View All Photos</button>
         </section>
+
+        <!-- Gallery Modal -->
+        <div id="gallery-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
+            <div style="position:sticky; top:0; background:#fff; padding:15px; text-align:right; z-index:10000;">
+                <button onclick="closeGalleryModal()" style="font-size:1.5em; background:none; border:none; cursor:pointer; color:#5a3823; font-weight:bold;">&times; Close</button>
+            </div>
+            <div style="padding:20px; display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:15px; max-width:1400px; margin:0 auto;">
+                <img src="{{ url_for('static', filename='img/RoomImage1.png') }}" alt="Elegant bed view at Hatten Homes" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/RoomImage2.png') }}" alt="Living area and workspace" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/RoomImage3.png') }}" alt="Bathroom photo" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/RoomImage4.jpg') }}" alt="Room & facilities overview" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (1).heic') }}" alt="Gallery photo 1" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (2).heic') }}" alt="Gallery photo 2" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (3).heic') }}" alt="Gallery photo 3" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (4).heic') }}" alt="Gallery photo 4" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (5).heic') }}" alt="Gallery photo 5" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (6).heic') }}" alt="Gallery photo 6" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (7).heic') }}" alt="Gallery photo 7" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (8).heic') }}" alt="Gallery photo 8" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+                <img src="{{ url_for('static', filename='img/Gallery1 (9).heic') }}" alt="Gallery photo 9" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);" />
+            </div>
+        </div>
+
+        <script>
+            function showGalleryModal() {
+                document.getElementById('gallery-modal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+            function closeGalleryModal() {
+                document.getElementById('gallery-modal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            // Close modal on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('gallery-modal');
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        </script>
         
         <!-- CONTACT (anchor for nav) -->
         <section id="contact"></section>
